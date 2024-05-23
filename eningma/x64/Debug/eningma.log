@@ -1,0 +1,8 @@
+﻿  main.cpp
+C:\Users\sistachss\source\repos\eningma\eningma\main.cpp(30,7): warning C4101: 'conect_4': unreferenced local variable
+C:\Users\sistachss\source\repos\eningma\eningma\main.cpp(29,7): warning C4101: 'conect_3': unreferenced local variable
+C:\Users\sistachss\source\repos\eningma\eningma\main.cpp(31,7): warning C4101: 'conect_5': unreferenced local variable
+C:\Users\sistachss\source\repos\eningma\eningma\main.cpp(28,7): warning C4101: 'conect_2': unreferenced local variable
+C:\Users\sistachss\source\repos\eningma\eningma\main.cpp(32,7): warning C4101: 'conect_6': unreferenced local variable
+main.obj : error LNK2019: unresolved external symbol "char __cdecl enter_settings(void)" (?enter_settings@@YADXZ) referenced in function main
+C:\Users\sistachss\source\repos\eningma\x64\Debug\eningma.exe : fatal error LNK1120: 1 unresolved externals
