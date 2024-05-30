@@ -1,0 +1,32 @@
+##Applied Programming Enigma Keyboard
+
+def main():
+    message = []
+    
+    while True:
+        # Ask user for a Letter
+        letter = input("Please enter the letter you wish to send: ").upper() #upper forces letters to be uppercase after entry
+        
+        message.append(letter)
+        
+        # Display current message
+        print("The message so far is: ")
+        print(" ".join(message)) #Print message with space between each letter
+        
+        # Ask if complete?
+        while True: #While loop to continue asking until Y is entered 
+            choice = input("Is your message complete (Y/N): ").upper() #Force Uppercase 
+            
+            if choice != 'Y' and choice != 'N': #Anything other than a Y or N is invalid
+                print("Invalid choice. Please enter Y or N.")
+            else:
+                break
+
+        # Yes is chosen final message is printed. 
+        if choice == 'Y': 
+            print("Message has been sent. The final message is: ")
+            print(" ".join(message))
+            return
+
+if __name__ == "__main__":
+    main()
