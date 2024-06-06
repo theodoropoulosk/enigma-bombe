@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "EnigmaIntegration", "EnigmaIntegration.pyproj", "{F10A4004-4BD1-4E81-B55D-E175A4E396C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F10A4004-4BD1-4E81-B55D-E175A4E396C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F10A4004-4BD1-4E81-B55D-E175A4E396C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C17214C1-519B-4025-B29B-EDB4E822F8A9}
+	EndGlobalSection
+EndGlobal
