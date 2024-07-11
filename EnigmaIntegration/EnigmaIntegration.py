@@ -1,5 +1,4 @@
-# ##Applied Programming Enigma 
-from multiprocessing import connection
+#Applied Programming Enigma
 
 #Changing The letter 
 def function_change(letter_passed):
@@ -11,7 +10,7 @@ def function_change(letter_passed):
     return letter_passed
     
 
-#Populating The conection list
+#Populating The connection list
 def enter_settings(numcon):
     start = 0
     for i in range(6):
@@ -23,7 +22,7 @@ def enter_settings(numcon):
         ok = 0
         while ok == 0:
             print("Enter first capital letter:")
-            letter = input()
+            letter = input().upper()
             for k in range(j+1):
                 if connection_list[k][0] == letter or connection_list[k][1] == letter:
                     ok = 0
@@ -35,7 +34,7 @@ def enter_settings(numcon):
         ok = 0
         while ok == 0:
             print("Enter second capital letter:")
-            letter = input()
+            letter = input().upper()
             for k in range(j+1):
                 if connection_list[k][0] == letter or connection_list[k][1] == letter:
                     ok = 0
@@ -49,41 +48,34 @@ def enter_settings(numcon):
 connection_list = [["0","0"],["0","0"],["0","0"],["0","0"],["0","0"],["0","0"]]     
 
  # Loop For Plugboard
-def plugbrd_loop ():
+def plugbrd_loop():
     reply = "A"
-    while (reply != "E"):
+    while reply != "E":
         print("Make connection (M), Delete connection (D), View connections (V), Exit (E)")
-        reply = input()
+        reply = input().upper()
         if reply == "M":
             print("How many connections do you want to make? (1-6)")
-            numcon = input()
-            numcon = int(numcon)    # parse string into an integer
-            available_conn = 0
-            for i in range(6):
-                if connection_list[i][0] == "0":
-                    available_conn += 1
+            numcon = int(input())
+            available_conn = sum(1 for conn in connection_list if conn[0] == "0")
             if numcon > available_conn:
                 print("Number of connections not possible")
             else:
-                test2 = enter_settings(numcon)
+                enter_settings(numcon)
                 print(connection_list)
         elif reply == "D":
             print(connection_list)
             print("Enter number of connection you want to delete")
-            num2 = input()
-            num2 = int(num2)
+            num2 = int(input())
             print(connection_list[num2-1])
             print("Are you sure you want to delete this connection? (Y or N)")
-            reply2 = input()
+            reply2 = input().upper()
             if reply2 == "Y":
-                del connection_list[num2-1]
-                connection_list.append(["0","0"])
+                connection_list[num2-1] = ["0","0"]
                 print(connection_list)
         elif reply == "V":
             print(connection_list)   
 
 # Rotors
-from os import name
 class Rotor:
     def __init__(self, array):
         self.array = array
@@ -120,8 +112,6 @@ def run(letter, rotor1, rotor2, rotor3, reflector):
     letter = rotor3.backward(letter)
     letter = rotor2.backward(letter)
     letter = rotor1.backward(letter)
-    if rotor1.rotate() or rotor2.rotate() or rotor3.rotate():
-        pass
     return letter
 
 
@@ -140,61 +130,50 @@ asign_starts(rotor1, rotor2, rotor3)
 
 
 # To Enter the message
-print ("Enter your message: ")
-initial_mes = input()
+print("Enter your message: ")
+initial_mes = input().upper()
 print(initial_mes)
 counter = len(initial_mes)
 encirpted_mes = []
 
-#Integration Loop
-for i in range (counter):
- 
-    print ("Passed Letter: ") 
-    print (initial_mes[i])
+# Integration Loop
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+reflector = Rotor(reflect_arr)
+
+for i in range(counter):
+    print(rotor1.position)
+    print(rotor2.position)
+    print(rotor3.position)
+    
+    print("Passed Letter: ") 
+    print(initial_mes[i])
 
     test1 = function_change(initial_mes[i]) 
     print("Plugboard 1: ")
     print(test1)
 
-    wheel1 = 0
-    wheel2 = 0
-    wheel3 = 0
-    number_times = 1
-    alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-    letter = test1 
+    letter = alphabet.index(test1)
 
-    reflector = Rotor(reflect_arr)
-
-    value = alphabet.index(letter)
-
-    for x in range(number_times):
-        n = run(value, rotor1, rotor2, rotor3, reflector) 
-        # print(alphabet[n])
-    
-        # router 1
-        rotor1.rotate()
-        # router 2
-        if (wheel1 % 26) == 0:
-            rotor2.rotate()
-        # router 3
-        if (((wheel2 % 26)+(wheel1 % 26)) == 0):
-            rotor3.rotate()
-
-
+    n = run(letter, rotor1, rotor2, rotor3, reflector) 
     test2 = alphabet[n]
-    print ("Rotors: ")
+    print("Rotors: ")
     print(test2)
-
 
     test3 = function_change(test2)
     print("Plugboard 2: ")
     print(test3)
 
-
     print("Initial Message: ")
-    print (initial_mes)
+    print(initial_mes)
+    
+    print("\n")
 
     encirpted_mes.append(test3)
+
+    # Rotors rotation logic
+    if rotor1.rotate():
+        if rotor2.rotate():
+            rotor3.rotate()
  
-print("Encripted Message: ")
-print (" ".join (encirpted_mes))
+print("Encrypted Message: ")
+print("".join(encirpted_mes))
