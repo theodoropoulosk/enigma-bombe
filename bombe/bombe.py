@@ -63,12 +63,7 @@ rotor2 = Rotor(array2)
 rotor3 = Rotor(array3)
 reflector = Rotor(reflect_arr)
 
-# Initiating the Crib and Cyphertext mapping 
-# print("Enter the Crib")
-# crib_in = input() 
-# print("Enter the Cyphertext")
-# cyphertext_in = input() 
- 
+
 for i in range (26):
     plugboard_guess = alphabet[i] 
     
@@ -110,14 +105,8 @@ for i in range (26):
     
 
     for f in range (len(crib_cyphertex)):
-        print ("Rotor1:")
-        print (wheel1)
-        print ("Rotor2:")
-        print (wheel2)
-        print ("Rotor3:")
-        print (wheel3)
         
-        print ("Plugboard Guess: ")
+        print ("Mapping Guess: ")
         print (alphabet[n], crib_cyphertex[f][1])
         
         match = False
@@ -154,6 +143,11 @@ for i in range (26):
                 # rotor 3
             if (((wheel2 % 26)+(wheel1 % 26)) == 0):
                 rotor3.rotate()
+        
+        print("Rotor Positions:")
+        print(rotor1.position)
+        print(rotor2.position)
+        print(rotor3.position)
         
         plugboard_mapping.append((alphabet[n], crib_cyphertex[f][1]))
         print ("Plugboard Maping:")
